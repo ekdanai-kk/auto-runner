@@ -1,0 +1,19 @@
+name: Frontend Auto Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    - name: Test deploy files
+      run: |
+        echo "=== Deployment Started ==="
+        pwd
+        ls -la
