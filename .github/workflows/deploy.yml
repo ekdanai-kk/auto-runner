@@ -1,4 +1,4 @@
-name: Frontend Auto Deploy
+name: Web Application Auto Deploy
 
 on:
   push:
@@ -12,8 +12,19 @@ jobs:
     - name: Checkout repository code
       uses: actions/checkout@v4
 
-    - name: Test deploy files
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies and Build
       run: |
-        echo "=== Deployment Started ==="
-        pwd
-        ls -la
+        echo "=== Building Project ==="
+        npm install
+        npm run build
+
+    - name: Deploy to Web Server
+      run: |
+        echo "=== Deploying to Web Server ==="
+        cp -R dist/* /var/www/html/
+        echo "Deployment Successful!"
