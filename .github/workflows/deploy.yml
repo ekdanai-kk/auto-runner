@@ -26,5 +26,5 @@ jobs:
     - name: Deploy to Web Server
       run: |
         echo "=== Deploying to Web Server ==="
-        cp -R dist/* /var/www/html/
+        cp -R dist/* /home/os-joan.chen/app-test/react-dist/
         echo "Deployment Successful!"
